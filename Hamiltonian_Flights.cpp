@@ -13,11 +13,12 @@ int main(){
         adj[a].push_back(b);
     }
     vector<vector<int>>dp((1<<n), vector<int>(n,0));
+    // starting from 1 
     dp[1][0] = 1;
     for(int mask = 1;mask < (1<<n); mask++){
         //starting city must be included
         if(!(mask & 1))continue;
-        //destination should not be visited
+        //city n-1 is reached but not visited all n-1 cities
         if((mask & (1 << (n-1))) && mask != (1<<n)-1){
             continue;
         }
